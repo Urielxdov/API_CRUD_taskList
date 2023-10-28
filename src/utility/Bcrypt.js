@@ -10,4 +10,4 @@ const passwordValidation = async (password, hashedPassword) => {
   return validation;
 };
 
-export default (passwordEncryption, passwordValidation);
+module.exports = { passwordEncryption, passwordValidation };

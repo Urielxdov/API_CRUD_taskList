@@ -1,5 +1,5 @@
-import createUser from "../models/UserData.models";
-import { validationResult, check } from "express-validator";
+const { createUser } = require("../models/UserData.models");
+const { validationResult, check } = require("express-validator");
 
 /* eslint-disable no-unused-vars */
 const registrerUserValidationRules = [
@@ -38,4 +38,4 @@ const registerUser = async (req, res) => {
   }
 };
 
-export default registerUser;
+module.exports = { registerUser };

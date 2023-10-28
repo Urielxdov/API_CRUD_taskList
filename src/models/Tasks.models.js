@@ -1,4 +1,4 @@
-import connection from "../database/database";
+const { connection } = require("../database/database");
 
 const createTask = (title, description, date, status) => {
   try {
@@ -14,4 +14,4 @@ const createTask = (title, description, date, status) => {
   }
 };
 
-export default createTask;
+module.exports = { createTask };

@@ -1,5 +1,5 @@
-import { createTask } from "../models/Tasks.models";
-import { validationResult, check } from "express-validator";
+const { createTask } = require("../models/Tasks.models");
+const { validationResult, check } = require("express-validator");
 
 /* eslint-disable no-unused-vars */
 const createTaskRules = [
@@ -27,4 +27,4 @@ const insertTask = (req, res) => {
   }
 };
 
-export default { insertTask };
+module.exports = { insertTask };

@@ -11,5 +11,4 @@ const dbConfig = {
 };
 
 const connection = mysql.createConnection(dbConfig);
-
-export default connection;
+module.exports = connection;

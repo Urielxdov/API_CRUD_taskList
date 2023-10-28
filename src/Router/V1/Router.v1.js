@@ -1,15 +1,13 @@
-import { Express } from "express";
+const express = require("express");
+const router = express.Router();
 
-import { registerUser } from "../../controllers/User.controller";
-
-import { insertTask } from "../../controllers/Task.controller";
-
-const router = Express.Router();
+const { registerUser } = require("../../controllers/User.controller");
+const { insertTask } = require("../../controllers/Task.controller");
 
 // Data user end-points
 router.post("/newUser", registerUser);
 
 // Data task end-points
-router.post('/newTask', insertTask);
+router.post("/newTask", insertTask);
 
-export default router;
+module.exports = { router };

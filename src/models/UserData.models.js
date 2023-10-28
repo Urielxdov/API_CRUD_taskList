@@ -1,5 +1,5 @@
-import { passwordEncryption } from "../utility/Bcrypt";
-import { connection } from "../database/database";
+const { passwordEncryption } = require("../utility/Bcrypt");
+const { connection } = require("../database/database");
 
 const createUser = async (name, lastName, password, email) => {
   try {
@@ -21,4 +21,4 @@ const createUser = async (name, lastName, password, email) => {
   }
 };
 
-export default createUser;
+module.exports = { createUser };
