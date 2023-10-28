@@ -1,17 +1,37 @@
 const { connection } = require("../database/database");
 
 const createTask = (title, description, date, status) => {
-  try {
+  return new Promise((resolve, reject) => {
     connection.query(
-      "INSERT INTO tasks_list VALUES (title, description, date, status)",
+      "INSERT INTO tasks_list (title, description, date, status) VALUES (?, ?, ?, ?)",
       [title, description, date, status],
-      (error, data) => {
-        if (error) console.log("All wrong");
+      (error, result) => {
+        if (error) {
+          console.error("Error al crear la tarea:", error);
+          reject(error);
+        } else {
+          resolve(result);
+        }
       },
     );
-  } catch (e) {
-    console.log("Internal error of side-server");
-  }
+  });
 };
 
-module.exports = { createTask };
+const readAllTasks = (userId) => {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      "SELECT * FROM tasks_list WHERE user_id = ?",
+      [userId],
+      (error, data) => {
+        if (error) {
+          console.error("Error al recuperar las tareas:", error);
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      },
+    );
+  });
+};
+
+module.exports = { createTask, readAllTasks };
