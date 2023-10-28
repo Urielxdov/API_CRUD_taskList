@@ -1,8 +1,10 @@
 require("dotenv").config();
 const Express = require("express");
 const cors = require("cors");
+const { router } = require('./Router/V1/Router.v1')
 
 const app = new Express();
+const port = process.env.PORT;
 
 const corsOptions = {
   origin: "*",
@@ -13,3 +15,10 @@ const corsOptions = {
 app.use(Express.json());
 
 app.use(cors(corsOptions));
+
+
+app.use('/v1', router);
+
+app.listen(port, ()=> {
+  console.log(`Server listening on port ${port}`);
+})

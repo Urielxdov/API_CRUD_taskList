@@ -10,14 +10,14 @@ const createUser = async (name, lastName, password, email) => {
       [name, lastName, email, hashedPassword],
       (error, data) => {
         if (error) {
-          console.error("Error al insertar la tarea:", error);
+          console.error("Error to insert the task:", error);
         } else {
-          console.log("Tarea insertada con éxito");
+          console.log("Tasl insercion succesful");
         }
       },
     );
   } catch (error) {
-    console.error("Error al cifrar la contraseña:", error);
+    console.error("Error to code the password:", error);
   }
 };
 

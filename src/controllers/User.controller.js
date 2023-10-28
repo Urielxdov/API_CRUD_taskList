@@ -1,20 +1,40 @@
 import createUser from "../models/UserData.models";
+import { validationResult, check } from "express-validator";
+
+/* eslint-disable no-unused-vars */
+const registrerUserValidationRules = [
+  check("name")
+    .not()
+    .isEmpty()
+    .withMessage("The name is required for this action"),
+  check("lastName")
+    .not()
+    .isEmpty()
+    .withMessage("The last name is required for this action"),
+  check("email")
+    .isEmail()
+    .withMessage("This does not comply with the rules for an email"),
+  check("password")
+    .not()
+    .isEmpty()
+    .withMessage("The password is required for this action"),
+];
 
 const registerUser = async (req, res) => {
-  const { name, lastName, email, password } = req.body;
+  const errors = validationResult(req);
 
-  if (!name || !lastName || !email || !password) {
-    return res
-      .status(400)
-      .json({ message: "Por favor, proporcione todos los datos requeridos." });
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
+
+  const { name, lastName, email, password } = req.body;
 
   try {
     await createUser(name, lastName, email, password);
-    res.status(201).json({ message: "Usuario creado con éxito" });
+    res.status(201).json({ message: "User created successfully" });
   } catch (error) {
-    console.error("Error al crear el usuario:", error);
-    res.status(500).json({ message: "Error interno del servidor" });
+    console.error("Error creating user:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
