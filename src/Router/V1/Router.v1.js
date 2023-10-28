@@ -1,5 +1,10 @@
-const Express = require('express');
+import { Express } from "express";
+
+import { registerUser } from "../../controllers/User.controller"
 
 const router = Express.Router();
 
-router.get();
+router.post('/newUser', registerUser);
+
+
+export default router;
