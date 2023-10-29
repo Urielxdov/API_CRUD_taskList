@@ -4,7 +4,7 @@ const cors = require("cors");
 const { router } = require("./Router/V1/Router.v1");
 
 const app = new Express();
-const port = process.env.PORT;
+const port = process.env.PORT || 4200;
 
 const corsOptions = {
   origin: "*",
@@ -19,5 +19,5 @@ app.use(cors(corsOptions));
 app.use("/v1", router);
 
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`Server listening in port ${port}`);
 });

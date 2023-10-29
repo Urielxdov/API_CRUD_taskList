@@ -24,7 +24,7 @@ const readAllTasks = (userId) => {
       [userId],
       (error, data) => {
         if (error) {
-          console.error("Error al recuperar las tareas:", error);
+          console.error("Error to recovered the tasks:", error);
           reject(error);
         } else {
           resolve(data);

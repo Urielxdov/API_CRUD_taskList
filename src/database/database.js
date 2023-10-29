@@ -7,7 +7,6 @@ const dbConfig = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   port: process.env.DB_PORT,
-  multipleStatements: process.env.DB_MULTIPLE_STATEMENTS,
 };
 
 const connection = mysql.createConnection(dbConfig);
